@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<link href="OnlineTool.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Trade Advantage Calculator</h1>
+
+<p><input type="text" id="countryname1" value = "country 1">Enter First Country Name</p>
+<p><input type="text" id="countryname2" value = "country 2">Enter Second Country Name</p>
+<button onclick = "CountryNames()" > Change Country Names </button>
+<p><input type="text" id="itemname1" value = "item 1">Enter First Item Name</p>
+<p><input type="text" id="itemname2" value = "item 2">Enter Second Item Name</p>
+<button onclick = "ItemNames()"> Change Item Names </button>
+<table width="60%" border="1">
+  <tbody>
+    <tr>
+      <td><strong>Country Name</strong></td>
+      <td id = "outputitemname1"><strong>Item #1</strong></td>
+      <td id= "outputitemname2"><strong>Item #2</strong> </td>
+    </tr>
+    <tr>
+      <td id = "OutputCountryName1">Country 1</td>
+      <td ><input type="number" id = "Item1QuantityCountry1" value = "5"> </td>
+      <td > <input type="number" id = "Item2QuantityCountry1" value = "5"> </td>
+    </tr>
+    <tr>
+      <td id = "OutputCountryName2">Country 2</td>
+      <td><input type="number" id = "Item1QuantityCountry2"  value = "7"></td>
+      <td><input type="number" id = "Item2QuantityCountry2" value = "10" ></td>
+    </tr>
+  </tbody>
+</table>
+<button onclick = "AbsoluteAdvantageCalculate1()">Calculate Absolute Advantage</button> <br>
+<button onclick = "ComparativeAdvantageCalculate()">Calculate Comparative Advantage</button>
+
+<p id = "AbsoluteAdvantageItem1"></p>
+<p id = "AbsoluteAdvantageItem2"></p>
+<p id = "ComparativeAdvantageItem1"></p>
+<p id = "ComparativeAdvantageItem2"></p>
+
+
+<script>
+function CountryNames() {
+	"use strict";
+	var truename1 = document.getElementById("countryname1").value;
+	var truename2 = document.getElementById("countryname2").value;
+	document.getElementById("OutputCountryName1").innerHTML = truename1;
+	document.getElementById("OutputCountryName2").innerHTML = truename2;
+}
+
+function ItemNames(){
+	"use strict";
+	var trueitemname1 = document.getElementById("itemname1").value;
+	var trueitemname2 = document.getElementById("itemname2").value;
+	document.getElementById("outputitemname1").innerHTML = trueitemname1;
+	document.getElementById("outputitemname2").innerHTML = trueitemname2;
+	
+}
+
+function AbsoluteAdvantageCalculate1(){
+	"use strict";
+	var truename1 = document.getElementById("countryname1").value;
+	var truename2 = document.getElementById("countryname2").value;
+	var trueitemname1 = document.getElementById("itemname1").value;
+	var trueitemname2 = document.getElementById("itemname2").value;
+	var nation1item1quantity = document.getElementById("Item1QuantityCountry1").value;
+	var n1i1q = Number(nation1item1quantity);
+	var nation1item2quantity = document.getElementById("Item2QuantityCountry1").value;
+	var n1i2q = Number(nation1item2quantity);
+	var nation2item1quantity = document.getElementById("Item1QuantityCountry2").value;
+	var n2i1q = Number(nation2item1quantity);
+	var nation2item2quantity = document.getElementById("Item2QuantityCountry2").value;
+	var n2i2q = Number(nation2item2quantity);
+	if (n1i1q > n2i1q) {
+		document.getElementById("AbsoluteAdvantageItem1").innerHTML = truename1 + " has the absolute advantage on " + trueitemname1;
+		
+		} else if (n1i1q < n2i1q) {
+		document.getElementById("AbsoluteAdvantageItem1").innerHTML = truename2 + " has the absolute advantage on " +trueitemname1;
+		} else if (n1i1q == n2i1q) {
+		document.getElementById("AbsoluteAdvantageItem1").innerHTML = "No country has the absolute advantage on " + trueitemname1 ;
+		}
+		if (n1i2q > n2i2q) {
+			document.getElementById("AbsoluteAdvantageItem2").innerHTML = truename1 + " has the absolute advantage on " + trueitemname2 ;
+		} else if (n1i2q < n2i2q){
+			document.getElementById("AbsoluteAdvantageItem2").innerHTML = truename2 + " has the absolute advantage on " + trueitemname2 ;
+			} else if (n1i2q == n2i2q){
+				document.getElementById("AbsoluteAdvantageItem2").innerHTML = "No country has the absolute advantage on " + trueitemname2 ;
+				}
+}
+	
+function ComparativeAdvantageCalculate(){
+	"use strict";
+	var truename1 = document.getElementById("countryname1").value;
+	var truename2 = document.getElementById("countryname2").value;
+	var trueitemname1 = document.getElementById("itemname1").value;
+	var trueitemname2 = document.getElementById("itemname2").value;
+	var nation1item1quantity = document.getElementById("Item1QuantityCountry1").value;
+	var n1i1q = Number(nation1item1quantity);
+	var nation1item2quantity = document.getElementById("Item2QuantityCountry1").value;
+	var n1i2q = Number(nation1item2quantity);
+	var nation2item1quantity = document.getElementById("Item1QuantityCountry2").value;
+	var n2i1q = Number(nation2item1quantity);
+	var nation2item2quantity = document.getElementById("Item2QuantityCountry2").value;
+	var n2i2q = Number(nation2item2quantity);
+	var OCn1i1q = n1i2q/n1i1q;
+	var OCn1i2q = n1i1q/n1i2q;
+	var OCn2i1q = n2i2q/n2i1q;
+	var OCn2i2q = n2i1q/n2i2q;
+	if (OCn1i1q < OCn2i1q){
+		document.getElementById("ComparativeAdvantageItem1").innerHTML = truename1 + " has the comparative advantage on " trueitemname1;
+	} else if (OCn1i1q > OCn2i1q){
+		document.getElementById("ComparativeAdvantageItem1").innerHTML = truename2 + " has the comparative advantage on " + trueitemname1;
+		} else if (OCn1i1q == OCn2i1q){
+			document.getElementById("ComparativeAdvantageItem1").innerHTML = " no country has a comparative advantage on " +
+			trueitemname1;
+		}
+		if (OCn1i2q < OCn2i2q){
+			document.getElementById("ComparativeAdvantageItem2").innerHTML = truename1 + " has the comparative advantage on " + trueitemname2;
+			}else if (OCn1i2q > OCn2i2q){
+				document.getElementById("ComparativeAdvantageItem2").innerHTML = truename2 + " has the comparative advantage on " + trueitemname2;
+				} else if (OCn1i2q == OCn2i2q){
+					document.getElementById("ComparativeAdvantageItem2").innerHTML = "no country has the comparative advantage on " + trueitemname2;
+					}
+		}
+		
+}
+
+
+
+</script>
+
+</body>
+</html>
+
